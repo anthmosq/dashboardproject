@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import './App.css'
 
 import { Grid } from '@mui/material';
 
 function App() {
-   const [count, setCount] = useState(0)
 
    return (
       <Grid container spacing={5} sx={{ justifyContent: "left", alignItems: "center" }}>
