@@ -7,6 +7,9 @@ import { Grid } from '@mui/material';
 import AlertUI from './components/AlertUI';
 import SelectorUI from './components/SelectorUI';
 
+import TableUI from './components/TableUI';
+import ChartUI from './components/ChartUI';
+
 function App() {
    // Obtenemos los datos del hook personalizado
    const dataFetcherOutput = useFetchData();
@@ -100,14 +103,15 @@ function App() {
          </Grid>
 
          {/* Gráfico */}
-         <Grid sx={{ display: { xs: "none", md: "block" } }}>
-            Elemento: Gráfico
+         <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
+            <ChartUI />
          </Grid>
 
          {/* Tabla */}
-         <Grid sx={{ display: { xs: "none", md: "block" } }}>
-            Elemento: Tabla
+         <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
+             <TableUI />
          </Grid>
+
 
          {/* Información adicional */}
          <Grid size={{ xs: 12, md: 12 }}>
