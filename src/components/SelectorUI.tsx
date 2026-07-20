@@ -11,7 +11,7 @@ interface SelectorProps {
 
 // Defina el prop en el componente
 export default function SelectorUI({ onOptionSelect }: SelectorProps) {
-    const [cityInput, setCityInput] = useState('');
+    const [cityInput, setCityInput] = useState('Guayaquil');
 
     const handleChange = (event: SelectChangeEvent<string>) => {
         const selectedValue = event.target.value;

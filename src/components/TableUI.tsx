@@ -33,7 +33,7 @@ const columns: GridColDef[] = [
 export default function TableUI({ data }: TableUIProps) {
    const hourlyData = data?.hourly;
 
-   const rows = (hourlyData?.time ?? []).slice(0, 7).map((time, index) => ({
+   const rows = (hourlyData?.time ?? []).slice(0, 13).map((time, index) => ({
       id: index,
       time: time.slice(11, 16),
       temperature: hourlyData?.temperature_2m[index] ?? 0,

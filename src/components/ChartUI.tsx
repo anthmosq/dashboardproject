@@ -15,7 +15,7 @@ export default function ChartUI({ data }: ChartUIProps) {
    return (
       <>
          <Typography variant="h5" component="div">
-            Temperatura y humedad por hora
+            Temperatura y humedad
          </Typography>
          <LineChart
             height={300}
