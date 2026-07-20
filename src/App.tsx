@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import HeaderUI from './components/HeaderUI';
 import IndicatorUI from './components/IndicatorUI';
 import useFetchData from './hooks/useFetchData';
@@ -11,12 +12,13 @@ import TableUI from './components/TableUI';
 import ChartUI from './components/ChartUI';
 
 function App() {
-   // Obtenemos los datos del hook personalizado
-   const dataFetcherOutput = useFetchData();
+   const [selectedOption, setSelectedOption] = useState<string | null>(null);
 
-   // Si dataFetcherOutput tiene una propiedad 'loading', úsala. 
-   // Si no la tiene, asumimos que está cargando mientras 'current' no exista.
-   const isLoading = dataFetcherOutput?.loading ?? !dataFetcherOutput?.current;
+   // Obtenemos los datos del hook personalizado
+   const dataFetcherOutput = useFetchData(selectedOption);
+
+   // Indicamos que está cargando mientras no exista el campo 'current'.
+   const isLoading = !dataFetcherOutput?.current;
 
    return (
       <Grid container spacing={5} sx={{ justifyContent: "left", alignItems: "center" }}>
@@ -39,7 +41,7 @@ function App() {
          <Grid size={{ xs: 12, md: 9 }}>
             Elemento: Selector
          </Grid>
-         <SelectorUI />
+         <SelectorUI onOptionSelect={setSelectedOption} />
 
          {/* Indicadores */}
          <Grid size={{ xs: 12, md: 12 }}>
@@ -104,12 +106,12 @@ function App() {
 
          {/* Gráfico */}
          <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
-            <ChartUI />
+            <ChartUI data={dataFetcherOutput} />
          </Grid>
 
          {/* Tabla */}
          <Grid size={{ xs: 6, md: 6 }} sx={{ display: { xs: "none", md: "block" } }}>
-             <TableUI />
+             <TableUI data={dataFetcherOutput} />
          </Grid>
 
 
